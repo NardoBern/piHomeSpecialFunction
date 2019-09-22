@@ -138,6 +138,15 @@ class database_engine:
             print e
 
     #####################################################
+    #### FUNZIONE DI AGGIORNAMENTO TEMPERATURA       ####
+    #####################################################
+    def scriviTemperatura(self,value,nomeStanza):
+        try:
+            self.c.execute("""UPDATE temperature set valore=%d where ID='%s'""" % (value,nomeStanza))
+        except Exception,e:
+            print 'ERRORE NEL AGGIORNAMENTO DEL VALORE DI TEMPERATURA'
+            print e
+    #####################################################
     #### FUNZIONE DI CANCELLAZIONE DI TUTTI I RECORD ####
     #####################################################
     def cancellaTuttiRecords(self,nomeTabella):
