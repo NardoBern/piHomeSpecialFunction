@@ -57,12 +57,62 @@ def oneMinFunction():
             print 'Errore nella lettura della temperatura in veranda'
             sensoreTemperaturaVeranda.valore = 9999
             print e
+    elif selettore.indice == 5:
+        try:
+            sensoreTemperaturaCucina.letturaSensore()
+            print 'Temperatura cucina: '
+            print sensoreTemperaturaCucina.valore
+        except Exception,e:
+            print 'Errore nella lettura della temperatura in cucina'
+            sensoreTemperaturaCucina.valore = 9999
+            print e
+    elif selettore.indice == 6:
+        try:
+            sensoreTemperaturaCorridoio.letturaSensore()
+            print 'Temperatura corridoio: '
+            print sensoreTemperaturaCorridoio.valore
+        except Exception,e:
+            print 'Errore nella lettura della temperatura in corridoio'
+            sensoreTemperaturaCorridoio.valore = 9999
+            print e
+    elif selettore.indice == 7:
+        try:
+            sensoreTemperaturaBagno.letturaSensore()
+            print 'Temperatura bagno: '
+            print sensoreTemperaturaBagno.valore
+        except Exception,e:
+            print 'Errore nella lettura della temperatura in bagno'
+            sensoreTemperaturaBagno.valore = 9999
+            print e
+    elif selettore.indice == 8:
+        try:
+            sensoreTemperaturaAntiBagno.letturaSensore()
+            print 'Temperatura Antibagno: '
+            print sensoreTemperaturaAntiBagno.valore
+        except Exception,e:
+            print 'Errore nella lettura della temperatura in antibagno'
+            sensoreTemperaturaAntiBagno.valore = 9999
+            print e
+    elif selettore.indice == 9:
+        try:
+            sensoreTemperaturaSala.letturaSensore()
+            print 'Temperatura Sala: '
+            print sensoreTemperaturaSala.valore
+        except Exception,e:
+            print 'Errore nella lettura della temperatura in sala'
+            sensoreTemperaturaSala.valore = 9999
+            print e
     elif selettore.indice == 15:
         print 'Qui salviamo tutto...'
         data_store.scriviTemperatura(float(sensoreTemperaturaCamino.valore*10),"camino")
         data_store.scriviTemperatura(float(sensoreTemperaturaCantina.valore*10),"cantina")
         data_store.scriviTemperatura(float(sensoreTemperaturaEsterna.valore*10),"esterna")
         data_store.scriviTemperatura(float(sensoreTemperaturaVeranda.valore*10),"veranda")
+        data_store.scriviTemperatura(float(sensoreTemperaturaCucina.valore*10),"cucina")
+        data_store.scriviTemperatura(float(sensoreTemperaturaCorridoio.valore*10),"corridoio")
+        data_store.scriviTemperatura(float(sensoreTemperaturaBagno.valore*10),"bagno")
+        data_store.scriviTemperatura(float(sensoreTemperaturaAntiBagno.valore*10),"antibagno")
+        data_store.scriviTemperatura(float(sensoreTemperaturaSala.valore*10),"sala")
         data_store.salva_dati()
         print 'Resetto il indice'
         selettore.indice = 0
@@ -125,6 +175,56 @@ except Exception,e:
     print 'ERRORE NELLA INIZIALIZZAZIONE DEL SENSORE TEMPERATURA VERANDA'
     print e
 time.sleep(0.1)
+try:
+    print 'INIZIALIZZAZIONE SENSORE TEMPERATURA CUCINA'
+    sensoreTemperaturaCucina = sensori_temperatura()
+    sensoreTemperaturaCucina.inizializzazione('28-030897790d0d')
+    sensoreTemperaturaCucina.letturaSensore()
+    print sensoreTemperaturaCucina.valore
+except Exception,e:
+    print 'ERRORE NELLA INIZIALIZZAZIONE DEL SENSORE TEMPERATURA CUCINA'
+    print e
+time.sleep(0.1)
+try:
+    print 'INIZIALIZZAZIONE SENSORE TEMPERATURA CORRIDOIO'
+    sensoreTemperaturaCorridoio = sensori_temperatura()
+    sensoreTemperaturaCorridoio.inizializzazione('28-001c0f000019')
+    sensoreTemperaturaCorridoio.letturaSensore()
+    print sensoreTemperaturaCorridoio.valore
+except Exception,e:
+    print 'ERRORE NELLA INIZIALIZZAZIONE DEL SENSORE TEMPERATURA CORRIDOIO'
+    print e
+time.sleep(0.1)
+try:
+    print 'INIZIALIZZAZIONE SENSORE TEMPERATURA BAGNO'
+    sensoreTemperaturaBagno = sensori_temperatura()
+    sensoreTemperaturaBagno.inizializzazione('28-00000b53574d')
+    sensoreTemperaturaBagno.letturaSensore()
+    print sensoreTemperaturaBagno.valore
+except Exception,e:
+    print 'ERRORE NELLA INIZIALIZZAZIONE DEL SENSORE TEMPERATURA BAGNO'
+    print e
+time.sleep(0.1)
+try:
+    print 'INIZIALIZZAZIONE SENSORE TEMPERATURA ANTIBAGNO'
+    sensoreTemperaturaAntiBagno = sensori_temperatura()
+    sensoreTemperaturaAntiBagno.inizializzazione('28-00000b5347c5')
+    sensoreTemperaturaAntiBagno.letturaSensore()
+    print sensoreTemperaturaAntiBagno.valore
+except Exception,e:
+    print 'ERRORE NELLA INIZIALIZZAZIONE DEL SENSORE TEMPERATURA ANTIBAGNO'
+    print e
+time.sleep(0.1)
+try:
+    print 'INIZIALIZZAZIONE SENSORE TEMPERATURA SALA'
+    sensoreTemperaturaSala = sensori_temperatura()
+    sensoreTemperaturaSala.inizializzazione('28-019aa6070002')
+    sensoreTemperaturaSala.letturaSensore()
+    print sensoreTemperaturaSala.valore
+except Exception,e:
+    print 'ERRORE NELLA INIZIALIZZAZIONE DEL SENSORE TEMPERATURA SALA'
+    print e
+time.sleep(0.1)
 #############################################
 #### INIZIALIZZAZIONE DATABASE DEI TREND ####
 #############################################
@@ -148,6 +248,11 @@ try:
     data_store.scriviTemperatura(float(sensoreTemperaturaCantina.valore)*10,"cantina")
     data_store.scriviTemperatura(float(sensoreTemperaturaEsterna.valore*10),"esterna")
     data_store.scriviTemperatura(float(sensoreTemperaturaVeranda.valore*10),"veranda")
+    data_store.scriviTemperatura(float(sensoreTemperaturaCucina.valore*10),"cucina")
+    data_store.scriviTemperatura(float(sensoreTemperaturaCorridoio.valore*10),"corridoio")
+    data_store.scriviTemperatura(float(sensoreTemperaturaBagno.valore*10),"bagno")
+    data_store.scriviTemperatura(float(sensoreTemperaturaAntiBagno.valore*10),"antibagno")
+    data_store.scriviTemperatura(float(sensoreTemperaturaSala.valore*10),"sala")
     data_store.salva_dati()
 except Exception,e:
     print 'ERRORE NELLA INIZIALIZZAZIONE DEL DATABASE DEI TREND'
